@@ -1,51 +1,367 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="physique,chimie,vidéo,animation,simulation,svg,python" />
     <meta name="author" content="anthony laurent" />
-    <meta name="description" content="site essentiellement destiné à la présentation d'animations html5 en physique-chimie permettant d'agrémenter les cours au lycée et collège. Codes python ajoutés  et de liens videos." />
+    <meta name="description" content="physique,chimie,animations html,lycée,professeur,python" />
     <link rel="icon" href="iconesite.ico" />
     <title>Animations pour la physique au lycée</title>
-
     <style>
-         body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
+        .divleft {
+            position: absolute;
+            border: 1px;
+            left: 0px;
+            top: 10%;
+            width: 15%;
+            height: 90%;
+            background-color: #5997AF;
+        }
+        
+        .divtop {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 10%;
+            background-color: #2C3E50;
+            border: 2px groove #fff;
+        }
+        
+        .divmax {
+            position: absolute;
+            left: 15%;
+            top: 10%;
+            width: 85%;
+            height: 90%;
             background-image: url("terre.jpg");
             background-repeat: no-repeat;
             background-position: center;
             background-attachment: fixed;
             -webkit-background-size: cover;
             background-size: cover;
+            overflow-y: scroll;
         }
-        #center{
+        
+        .button {
+            display: block;
+            position: absolute;
+            width: 90%;
+            height: 12%;
             text-align: center;
+            border: 3px solid #d4d4d0;
+            text-decoration: none;
+            border-radius: 27%;
+            margin-left: 4%;
+            margin-right: 5%;
+            box-Shadow: 1px 1px;
+            background: linear-gradient(#719FD3, #213D5C);
+            cursor: pointer;
         }
-        #fontp{
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        
+        .button:hover {
+            background: linear-gradient( #F07E7B, #C33B34);
+        }
+        
+        .button:active {
+            background: linear-gradient( #61C261, #52A652);
+        }
+        
+        .seconde {
+            position: absolute;
+            left: 0px;
+            top: 5px
+        }
+        
+        .premiere {
+            position: absolute;
+            left: 0px;
+            top: 95px;
+        }
+        
+        .ES {
+            position: absolute;
+            left: 0px;
+            top: 185px;
+        }
+        
+        .python {
+            position: absolute;
+            left: 0px;
+            top: 275px;
+        }
+        
+        .latis {
+            position: absolute;
+            left: 0px;
+            top: 365px;
+        }
+        
+        .divers {
+            position: absolute;
+            left: 0px;
+            top: 455px;
+        }
+        
+        .police2 {
+            font-family: verdena, Helvetica, sans-serif;
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: none;
             color: ivory;
-            font-size:3vw;
-            text-align: left;
         }
-        #fonta{
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 3.5vw;
+        
+        .police3 {
+            font-family: verdena, Helvetica, sans-serif;
+            font-style: italic;
+            text-decoration: underline;
+            color: #DEB887;
         }
-        a { color:#0f0 }
+        
+        #dateCSS {
+            font-family: verdena, Helvetica, sans-serif;
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: none;
+            color: white;
+            margin-left: 100px;
+            margin-right: 100px;
+            text-align: center;
+            border: 2px solid white;
+        }
+        
+        h1 {
+            font-family: verdena, Helvetica, sans-serif;
+            font-weight: bold;
+            font-style: normal;
+            text-decoration: underline;
+            color: #FFFBF0;
+            padding-left: 20px;
+        }
+        
+        h2 {
+            padding-left: 60px;
+        }
+        
+        .police3:hover {
+            color: red;
+        }
+        
+        #ptitle {
+            border: 1px solid ivory;
+            font-family: verdena, Helvetica, sans-serif;
+            font-weight: bold;
+            font-style: normal;
+            color: ivory;
+            margin: auto;
+            padding: 2px;
+        }
+        
+        .refid {
+            width: 20%;
+            vertical-align: middle;
+        }
     </style>
 </head>
+
 <body>
-    <br><br><br><br><br>
-    <div id="center">
-    <p id="fontp">
-        Le 5 septembre 2023, le service Pages Perso orange fermera définitivement.
-        Voici le nouveau lien qui permet d'accéder au site par changement d'hébergeur :
-    </p>
-  <br><br>
-    <a id="fonta" href="https://animations-en-physique.000webhostapp.com">https://animations-en-physique.000webhostapp.com</a>  
-</div>
+    <div class="divtop">
+        <p id="ptitle"> </p>
+    </div>
+    <div class="divleft">
+        <a class="button seconde police2" href="#para1">Seconde</a>
+        <a class="button premiere police2" href="#para2">Première</a>
+        <a class="button ES police2" href="#para3">Ens_sc.</a>
+        <a class="button python police2" href="#para4">PYTHON</a>
+        <a class="button latis police2" href="#para5">LatisPro</a>
+        <a class="button divers police2" href="#para6">Divers</a>
+    </div>
+
+    <div class="divmax">
+        <p id="dateCSS"></p>
+        <h1 id="para1">Seconde :</h1>
+        <h2>
+            <a class="police3" href="refraction.html" target="_blank"><img src="refraction.svg" alt="animation réfraction hémicylindre" class='refid' /> animation réfraction hémicylindre</a>
+        </h2>
+        <h2>
+            <a class="police3" href="snap/dist/referentiel_mouvement.html" target="_blank"><img src="referentielgalilee.svg" alt="animation référentiel mouvement" class='refid' /> animation référentiel et mouvement</a>
+        </h2>
+        <h2>
+            <a class="police3" href="snap/dist/relativite_du_mouvement.html" target="_blank"><img src="relativitemouvement.svg" alt="animation relativité du mouvement" class='refid' /> animation relativité du mouvement</a>
+        </h2>
+        <h2><a class="police3" href="sons_fourier.html" target="_blank">hauteur et timbre d'un son-animation</a></h2>
+        <h1 id="para2">Première :</h1>
+        <h2>
+            <a class="police3" href="relation_de_conjugaison.html" target="_blank"><img src="lentille_conjugaison.svg" alt="lentille convergente imageR" class='refid' /> animation lentille</a>
+        </h2>
+        <h2>
+            <a class="police3" href="lentille.html" target="_blank"><img src="imagereelle.svg" alt="lentille rayons caractéristiques" class='refid' /> animation lentille convergente-rayons caractéristiques</a>
+        </h2>
+        <h2>
+            <a class="police3" href="image_virtuelle.html" target="_blank"><img src="imagevirtuelle.svg" alt="lentille convergente image virtuelle" class='refid' /> animation formation d'une image virtuelle</a>
+        </h2>
+        <h2>
+            <a class="police3" href="visiondescouleurs.html" target="_blank"><img src="visiondescouleurs.svg" alt="oeil et couleurs complémentaires" class='refid' /> animation vision des couleurs</a>
+        </h2>
+        <h2><a class="police3" href="conjugaison_latis.html" target="_blank"> exploitation relation de conjugaison-latispro</a></h2>
+        <h2>
+            <a class="police3" href="synthese_additive.html" target="_blank"><img src="synthese_add.svg" alt="synthèse additive des couleurs" class='refid' /> synthèse additive des couleurs</a>
+        </h2>
+        <h2>
+            <a class="police3" href="synthese_soustractive.html" target="_blank"><img src="synthese_soustractive.svg" alt="synthèse soustractive des couleurs" class='refid' /> animation synthèse soustractive</a>
+        </h2>
+        <h2><a class="police3" href="ecranplat.swf" target="_blank"> l'affichage des couleurs sur nos écrans (flash)</a></h2>
+        <h2><a class="police3" href="grille_de_pixels.swf" target="_blank"> image et couleurs (flash)</a></h2>
+        <h2><a class="police3" href="boite_a_couleurs.swf" target="_blank"> boîte à couleurs (flash)</a></h2>
+        <h2><a class="police3" href="tableau.html" target="_blank"> introduction sur le tableau d'avancement</a></h2>
+        <h2><a class="police3" href="tp8.html" target="_blank"> tp n°8 sur le tableau d'avancement</a></h2>
+        <h1 id="para3">Enseignement scientifique :</h1>
+        <h2>
+            <a class="police3" href="lune_face_cachee.html" target="_blank"><img src="face_visible_Lune.svg" alt="animation face visible de la Lune" class='refid' /> animation face visible de la Lune</a>
+        </h2>
+        <h2><a class="police3" href="becquerel.html" target="_blank"> expérience historique de Becquerel</a></h2>
+        <h2><a class="police3" href="eratosthene.html" target="_blank"> une hypothèse d'Ératosthène</a></h2>
+        <h2><a class="police3" href="distance.html" target="_blank">distance minimale entre deux points sur le globe</a></h2>
+        <h1 id="para4">Code python :</h1>
+        <h2><a class="police3" href="aleatoire_de.py" target="_blank"> lancer de dé (ES)</a></h2>
+        <h2><a class="police3" href="decroissance_du_nombre_de_des.py" target="_blank"> décroissance du nombre de dés (ES)</a></h2>
+        <h2><a class="police3" href="carbone_14.py" target="_blank"> décroissance du carbone 14 (ES)</a></h2>
+        <h2><a class="police3" href="algo.html" target="_blank"> Détermination de l’âge de la Terre avec algorithme (ES)</a></h2>
+        <h2><a class="police3" href="transitions_energetiques.html" target="_blank">Trouver toutes les transitions énergétiques d'un atome</a></h2>
+        <h1 id="para5">LatisPro :</h1>
+        <h1 id="para6">Documents divers :</h1>
+    </div>
+    <script>
+        var htmlElement = document.getElementsByTagName('html')[0];
+        htmlElement.style.overflow = 'hidden';
+
+        function onresize(evt) {
+            var viewportX = window.innerWidth;
+            var viewportY = window.innerHeight;
+            sizeft = viewportX / 55;
+            var h1elts = document.getElementsByTagName('h1');
+            var h2elts = document.getElementsByTagName('h2');
+            document.getElementById('dateCSS').style.fontSize = sizeft * 1.75 + "px";
+
+            var buts = document.getElementsByClassName('button');
+            var titre = document.getElementById("ptitle");
+            titre.style.fontSize = 1.8 * sizeft + "px";
+            titre.innerText = "Site de sciences physiques";
+            titre.style.position = "absolute";
+            titre.style.top = (0.1 * viewportY - titre.offsetHeight) / 2 + "px";
+            titre.style.left = (viewportX - titre.offsetWidth) / 2 + "px";
+            let btdim = .11 * viewportY;
+            if (btdim < .14 * viewportX) butMes.create((.15 * viewportX - btdim) / 2, .67 * viewportY + (.33 * viewportY - btdim) / 2, btdim);
+            else butMes.create(.005 * viewportX, .67 * viewportY + (.33 * viewportY - .14 * viewportX) / 2, .14 * viewportX);
+
+            for (var i = 0; i <= 5; i++) {
+                h1elts[i].style.fontSize = sizeft * 1.5 + "px";
+            }
+
+            for (var j = 0; j <= 24; j++) {
+                h2elts[j].style.fontSize = sizeft * 1.3 + "px";
+            }
+
+            for (var k = 0; k <= 5; k++) {
+                buts[k].style.fontSize = sizeft * 1.2 + "px";
+                buts[k].style.top = k * .13 * viewportY + "px";
+                buts[k].style.lineHeight = .1 * viewportY + "px";
+            }
+        }
+        window.addEventListener("load", onresize);
+        window.addEventListener("resize", onresize);
+
+        var tableauMois = new Array(
+            'janvier',
+            'février',
+            'mars',
+            'avril',
+            'mai',
+            'juin',
+            'juillet',
+            'août',
+            'septembre',
+            'octobre',
+            'novembre',
+            'décembre'
+        );
+        var tableauJours = new Array(
+            'Dimanche',
+            'Lundi',
+            'Mardi',
+            'Mercredi',
+            'Jeudi',
+            'Vendredi',
+            'Samedi'
+        );
+        var dateGlobale = new Date();
+        var annee = dateGlobale.getFullYear();
+        var nbmois = dateGlobale.getMonth();
+        var numeroJour = dateGlobale.getDate();
+        var nbjour = dateGlobale.getDay();
+        strmois = tableauMois[nbmois];
+        strjour = tableauJours[nbjour];
+        var aujourdhui = document.getElementById("dateCSS");
+        aujourdhui.innerHTML = strjour + " " + numeroJour + " " + strmois + " " + annee;
+
+
+        function ButtonMessage(htmlcontainer) {
+            this.innerHTML = window.document.createElement("div");
+            if (htmlcontainer !== undefined) {
+                htmlcontainer.appendChild(this.innerHTML);
+            } else {
+                window.document.body.appendChild(this.innerHTML);
+            }
+            var im = new Image();
+            this.create = function(x, y, w) {
+                this.innerHTML.style.width = w;
+                this.innerHTML.style.height = w;
+                im.height = w;
+                im.width = w;
+                this.innerHTML.appendChild(im);
+                this.innerHTML.style.position = "absolute";
+                this.innerHTML.style.left = x + 'px';
+                this.innerHTML.style.top = y + 'px';
+            };
+            var survol = false;
+            this.innerHTML.style.cursor = "pointer";
+
+
+            function draw() {
+                if (!survol) {
+                    im.src = 'outbtn.svg';
+                } else {
+                    im.src = 'hoverbtn.svg';
+                }
+            }
+
+            draw();
+
+            this.innerHTML.addEventListener('mouseout', onmouseout);
+            this.innerHTML.addEventListener('mouseover', onmouseover);
+
+
+            function onmouseover(event) {
+                survol = !survol;
+                draw();
+            }
+
+            function onmouseout(event) {
+                survol = !survol;
+                draw();
+            }
+        }
+
+        let butMes = new ButtonMessage(document.getElementsByClassName('divleft')[0]);
+
+        butMes.innerHTML.addEventListener('mousedown', onmousedown);
+
+        function onmousedown(event) {
+            window.open('formulaire.html')
+        }
+    </script>
 </body>
+
 </html>
