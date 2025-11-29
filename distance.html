@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>distance entre deux points à la surface de la Terre</title>
+    <meta name="author" content="Anthony Laurent"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <style>
+        body{
+            background-color: #FFFFCC;
+        }
+        .title{
+            font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:normal;text-decoration: underline;
+            color:black;
+        }
+         #distance{
+            font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:normal;
+            color:blue;
+        }
+        #but{
+           font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:normal;text-decoration: none;
+            color:green; 
+        }
+        input[type=text]{
+           font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:normal;text-decoration: none;
+            color:green;  
+        }
+        h1{
+            text-align:center;
+            font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:normal;text-decoration: none;
+            border: 1px solid black;
+        }
+        #lien{
+            font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-style:italic;font-size:20px;
+            color:#FF4500;
+        }
+        img{
+            border: 1px solid blue;
+            max-width:100%;
+	           max-height:100%;
+        }     
+    </style>
+</head>
+<body>
+<h1>Évaluer la distance entre deux points à la surface de la Terre</h1>
+<a href="https://www.mapsdirections.info/fr/coordonnees-sur-google-map.html" id='lien' target="_blank">lien pour trouver les coordonnées GPS (latitude-longitude) d'un lieu</a>
+
+ <div class="title">Saisir la latitude du premier lieu :</div>
+ <input type='text' id="lat1">
+ <div class="title">Saisir la longitude du premier lieu :</div>
+ <input type='text' id="long1">
+ <div class="title">Saisir la latitude du second lieu :</div>
+ <input type='text' id="lat2">
+ <div class="title">Saisir la longitude du second lieu :</div>
+ <input type='text' id="long2">
+ <input type="button" id="but" value="Calculer" id= 'but'>
+ <div id="distance">Chemin le plus court (longueur d'arc du grand cercle) = 0 km</div>
+ <div id="conteneur1">
+	   <img src='formule_dist.jpg'>
+ </div>
+ <div id="conteneur2">
+	   <img src='grand_cercle.jpg'>
+ </div>
+
+<script>
+   window.addEventListener("resize", onresize);
+   function onresize(){
+              var viewportX=window.innerWidth;
+              sizeft=viewportX/55;
+        
+			  var inputelts=document.getElementsByTagName('input');
+			  var eltstitle=document.getElementsByClassName('title');
+			  var lien=document.getElementById("lien");
+			  var resultat=document.getElementById("distance");
+			  var h=document.getElementsByTagName('h1')[0];
+			  
+			  var but=document.getElementById("but");
+			  but.style.position='absolute';
+			  but.style.left=viewportX/40+'px';
+			  but.style.fontSize=sizeft+'px';
+			  but.style.top=6.2*viewportX/20+'px';
+     but.style.width=0.1*viewportX+"px";
+     but.style.height=0.03*viewportX+"px";
+			  
+			  h.style.fontSize=1.2*sizeft+'px';
+			  
+			  resultat.style.position='absolute';
+			  resultat.style.left=viewportX/40+'px';
+			  resultat.style.fontSize=sizeft+'px';
+			  resultat.style.top=7*viewportX/20+'px';
+			  
+			  lien.style.position='absolute';
+			  lien.style.left=viewportX/40+'px';
+			  lien.style.fontSize=sizeft+'px';
+			  lien.style.top=viewportX/15+'px';
+			  
+			  var conteneur1=document.getElementById("conteneur1");
+			  conteneur1.style.position='absolute';
+			  conteneur1.style.height=(viewportX/2.1)*244/692+'px';
+			  conteneur1.style.width=viewportX/2.1+"px";
+			  conteneur1.style.left=viewportX-viewportX/1.7+'px';
+			  conteneur1.style.top=viewportX/10+'px';
+     
+     var conteneur2=document.getElementById("conteneur2");
+			  conteneur2.style.position='absolute';
+			  conteneur2.style.height=(viewportX/5)*419/460+'px';
+			  conteneur2.style.width=viewportX/5+"px";
+			  conteneur2.style.left=viewportX-viewportX/2.9+'px';
+			  conteneur2.style.top=viewportX/3.5+'px';
+			  
+		
+     for (var i=0; i<=4;  i++){
+       if(inputelts[i].type.toLowerCase()=="text"){
+       inputelts[i].style.fontSize =sizeft+'px';
+       inputelts[i].style.position='absolute';
+       inputelts[i].style.left=viewportX/40+'px';
+       inputelts[i].style.top=(i+2.5)*viewportX/20+'px';
+       inputelts[i].size=(viewportX/150).toString();
+       }
+       eltstitle[i].style.position='absolute';
+       eltstitle[i].style.left=viewportX/40+'px';
+       eltstitle[i].style.top=(i+2)*viewportX/20+'px';
+       eltstitle[i].style.fontSize =0.9*sizeft+'px';  
+     }    
+   }
+   window.addEventListener("load",onresize);
+    
+   function calculer(){ 
+    const pi=Math.PI;
+    const rad=pi/180;
+    var lat1=document.getElementById("lat1"), long1=document.getElementById("long1"),lat2=document.getElementById("lat2"), long2=document.getElementById("long2");
+    var  phi1=rad*parseFloat(lat1.value),phi2=rad*parseFloat(lat2.value),lamb1=rad*parseFloat(long1.value),lamb2=rad*parseFloat(long2.value);
+    
+    var d= 6370*Math.acos( Math.sin(phi1)*Math.sin(phi2)+Math.cos(phi1)*Math.cos(phi2)*Math.cos(lamb2-lamb1) );
+                          
+    var distance=document.getElementById("distance");
+    distance.innerText="Chemin le plus court (longueur d'arc du grand cercle) =   "+ d.toFixed(2) +'   km';
+  }
+  
+  function onkeyup(e) {
+     e.target.value=e.target.value.replace(  /[^0-9.-]/g, '' );
+   }
+  var all_input= document.getElementsByTagName('input');
+  for (let i = 0; i < all_input.length; i++) {
+    all_input[i].addEventListener('keyup',onkeyup);
+  }
+  
+  document.getElementById('but').addEventListener('click',calculer);
+    
+</script>
+
+</body>
+</html>
