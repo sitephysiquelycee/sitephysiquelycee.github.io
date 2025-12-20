@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Convertisseur Euro-Dollar</title>
+</head>
+<body>
+  <h1>Convertisseur Euro-Dollar</h1>
+  <input type="number" id="euroAmount" placeholder="Montant en euros" />
+  <button onclick="convertCurrency()">Convertir</button>
+  <p id="result"></p>
+
+  <script>
+    const apiKey = '51ffa3b15717991ce252f775';
+    const url = `https://api.exchangerate-api.com/v4/latest/EUR`;
+
+    async function convertCurrency() {
+      const euroAmount = document.getElementById('euroAmount').value;
+      if (!euroAmount) {
+        alert('Veuillez entrer un montant en euros.');
+        return;
+      }
+
+      try {
+        const response = await fetch(url, {
+          headers: {
+            'Authorization': `Bearer ${apiKey}`
+          }
+        });
+        const data = await response.json();
+        const rate = data.rates.USD;
+        const dollarAmount = (euroAmount * rate).toFixed(2);
+        document.getElementById('result').textContent = `${euroAmount} EUR = ${dollarAmount} USD`;
+      } catch (error) {
+        console.error('Erreur lors de la récupération du taux de change:', error);
+        alert('Impossible de récupérer le taux de change.');
+      }
+    }
+  </script>
+</body>
+</html>
